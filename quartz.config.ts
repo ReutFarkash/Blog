@@ -24,20 +24,20 @@ const config: QuartzConfig = {
       cdnCaching: true,
       typography: {
         header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
-        code: "IBM Plex Mono",
+        body: "Inter",           // Clean, modern sans-serif
+        code: "JetBrains Mono",  // Developer-friendly monospace
       },
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
+          light: "#faf4ed",         // Base background (soft cream)
+          lightgray: "#fffaf3",     // Surface/panel background
+          gray: "#9893a5",          // Muted text
+          darkgray: "#575279",      // Main text
+          dark: "#286983",          // Headings (pine)
+          secondary: "#d7827e",     // Links/Accents (rose)
+          tertiary: "#ea9d34",      // Hover states (gold)
+          highlight: "rgba(215, 130, 126, 0.15)", // Highlight background
+          textHighlight: "#efc9c2", // Marker highlight
         },
         darkMode: {
           light: "#161618",
