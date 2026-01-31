@@ -40,7 +40,7 @@ Because this uses advanced logic, you need to enable JavaScript.
 1.  Create a folder in your vault called `_utils` (Note that anything here will be disregarded by the script by default).
 2.  Inside that, create a folder called `_dataview_scripts`.
 3.  Create a new file named `content-metadata-view.js`.
-4.  Copy and paste the code from the [content-metadata-view.js](https://github.com/ReutFarkash/_dataview_scripts/blob/main/content-metadata-view.js) into that file.
+4.  Copy and paste the code from the [content-metadata-view.js](https://github.com/ReutFarkash/obsidian_open_vault/blob/main/_utils/_dataview_scripts/content-metadata-view.js) into that file.
 
 ## How to Use It
 
@@ -111,7 +111,7 @@ While the dashboard makes *finding* things easy, *saving* them needs to be frict
 
 I created a few simple templates that automatically format the link, title, and metadata into a single bullet point. This lets me clip items directly into my **Daily Note**. Once they are there, I can either leave them (and let the script find them later) or move them to a relevant project note.
 
-Here are the templates I use:
+The templates I use can be found [here](https://github.com/ReutFarkash/obsidian_open_vault/tree/main/web_clipper_templates)
 
 ### The "Tweet Line" Template
 Captures the tweet author and link, adding a `#tweet` tag automatically.
