@@ -4,7 +4,8 @@ title: Reut Builds Stuff
 
 # Reut Builds Stuff
 
-Welcome to my technical blog and digital garden. I write about software development, technology, and whatever I feel like.
+Welcome to my technical blog and digital garden (maybe?). I write about software development, crochet and whatever else I'm obsessed with at the moment.
+Really, I just found myself needing to send an explanation about some project I created to a not so techie friend and this seemed easier then sending them the relevant obsidian page from my vault and having to explain what markdown is. Also this incentives me to actually package up my personal projects after the high of getting them to work has passed and I've moved on to the next shinny thing. It's also nice to be able to easily spin up something I worked on without rummaging through 80 half baked repos.
 
 ## Recent Posts
 

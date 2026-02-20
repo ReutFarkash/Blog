@@ -4,5 +4,5 @@ This file tracks the lifecycle of technical blog posts for the Quartz/Obsidian v
 
 | Title | Status | Last Updated | Open TODOs |
 | :--- | :--- | :--- | :--- |
-| Session Checkpoint: Real-time Context Management in Gemini CLI | Drafting | 2026-02-19 | 0 |
-| Obsidian Chat Summary: Bridging Gemini CLI and Personal Knowledge Management | Drafting | 2026-02-19 | 3 |
+| Session Checkpoint | Drafting | 2026-02-19 | 2 |
+| Obsidian Chat Summary | Drafting | 2026-02-19 | 3 |
