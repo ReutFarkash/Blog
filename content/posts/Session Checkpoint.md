@@ -6,7 +6,6 @@ tags:
   - gemini-skills
   - guide
 ---
-
 The `session-checkpoint` skill is a state-recovery tool for the Gemini CLI. It gives you a single-command summary of your current project goal and active tool permissions, ensuring you stay in control during complex sessions.
 Really I just created this to help me get back into sessions after a squirrel ran by.
 
