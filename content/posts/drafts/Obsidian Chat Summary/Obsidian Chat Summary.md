@@ -27,16 +27,16 @@ Instead of conversational fluff, the logic hunts for:
 - **Open Loops:** What's still broken or "TODO" for the next session?
 
 ### 3. Centralized Shared Settings (DRY)
-### 3. Centralized Shared Settings
 
 The skill pulls from a central configuration at `_shared-gemini/` to get info and configs that are relevant to multiple skills, like formatting that matches my Obsidian vault style.
 
 ```markdown
 # Shared frontmatter template
 ---
-tags: ai_text, {{tags}}
-date: {{date}}
-source: gemini-cli, [[Gemini-CLI]]
+tags:
+  - ai_text
+  - {{tags}}
+date_created: {{date}}
 ---
 # Contextual identifiers
 - **Working Directory:** `{{working_directory}}`
@@ -50,7 +50,7 @@ This ensures that whether I'm generating a chat summary or a visual narrative ma
 To use these shared settings, you need to expose the directory to your Gemini CLI session.
 
 ### 1. Clone the Shared Config
-You can find my base templates in the [coffeeproject repository](https://github.com/ReutFarkash/coffeeproject). Clone or copy the `_shared-gemini` folder to a stable location on your machine (e.g., `~/Documents/_shared-gemini`).
+You can find my base templates in the [gemini-skills repository](https://github.com/ReutFarkash/gemini-skills). Clone or copy the `_shared-gemini` folder to a stable location on your machine (e.g., `~/Documents/_shared-gemini`).
 
 ### 2. Launch with Context
 The Gemini CLI doesn't automatically scan your entire drive. You must explicitly tell it where the shared resources live using the `--include-directories` flag:
@@ -80,17 +80,17 @@ Clone the base settings into your project root (or a central location):
 
 ```bash
 # Clone the repository
-git clone https://github.com/ReutFarkash/coffeeproject.git
+git clone https://github.com/ReutFarkash/gemini-skills.git
 
 # The shared settings are located in the _shared-gemini folder
-cp -r coffeeproject/_shared-gemini .
+cp -r gemini-skills/_shared-gemini .
 ```
 
 ### 2. Install the Skill
 If you’re using the Gemini CLI, you can pull this in directly:
 
 ```bash
-gemini skill install https://github.com/ReutFarkash/coffeproject/blob/master/skills/obsidian-chat-summary/SKILL.md --path skills/obsidian-chat-summary
+gemini skill install https://github.com/ReutFarkash/gemini-skills/blob/main/obsidian-chat-summary/SKILL.md --path skills/obsidian-chat-summary
 ```
 
 ### 3. Run with Context

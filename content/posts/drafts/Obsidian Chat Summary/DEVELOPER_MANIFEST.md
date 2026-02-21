@@ -47,3 +47,9 @@
 - **Infrastructure Change:** Moved `_shared-gemini` directory into the root of `coffeeproject` repository. This ensures that users cloning the repo get both the skills and the necessary shared config in one go.
 - **Documentation:** Updated the "Try it out" section with a clear 3-step technical snippet covering config cloning, skill installation, and contextual launching. 
 - **Verification:** Verified that the repo structure now matches the blog post's instructions.
+
+[2026-02-21 16:20]
+## Update: Repository Synchronization
+- **Infrastructure Change:** Synced all GitHub URLs to the dedicated `gemini-skills` repository (`https://github.com/ReutFarkash/gemini-skills`).
+- **Standardization:** Updated frontmatter examples to match the new list-style tags and `date_created` fields established in the shared settings.
+- **Verification:** Installation commands verified against the public repository structure.
