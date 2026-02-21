@@ -20,12 +20,13 @@ This file tracks the lifecycle of technical blog posts for the Quartz/Obsidian v
     - How to bootstrap a new project with AI-enhanced documentation.
 - **Skill Spotlight: `conversation-flow`:** Visualizing the narrative of a technical session. (Note: Include the Mermaid backtick fix when resolved).
 - **Skill Spotlight: `project-maintainer`:** verifiable documentation with GitOps-tethered history logs.
-- **Skill Spotlight: `session-checkpoint`:** Mastering the state-save habit to never lose context.
+- **Information Flow Architecture:** How the `project-maintainer` maps the relationships between history, status, and todos across a multi-repository ecosystem.
 
 ### ✍️ Writing & Content
 - **Humanizing the Agent:** Why technical blogs need a human voice and how the `softaworks-humanizer` skill helps bridge the gap.
 - **Building a Technical History in Obsidian:** Using `ai_text` tags and Dataview to create a dashboard of your engineering journey.
 
 ### ⚡ Productivity Tools
+- **The AI-Optimized CLI:** Polishing bash dotfiles and environment variables to create a high-performance environment for AI pairing.
 - **Wispr Flow:** Why voice-to-text is the next frontier for developer documentation (include referral link).
 - **Shadow History Pattern:** How to separate "Product" code from "Process" logs using Git submodules.
