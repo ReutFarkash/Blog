@@ -1,44 +1,103 @@
 ---
-title: Obsidian Chat Summary: Bridging Gemini CLI and Personal Knowledge Management
-date: 2026-02-19
+title: "Chat Summary: Stop losing your Gemini CLI context in Obsidian"
+date: 2026-02-20
 tags:
-  - technical
-  - blog
-  - ai-tools
+  - gemini-cli
   - obsidian
+  - workflow
 ---
+I got tired of losing track of what my AI agent actually *did* during a long session, so I built `obsidian-chat-summary`. It’s a small skill that turns a messy terminal history into a clean, structured Markdown note for your Obsidian vault.
 
-The `obsidian-chat-summary` skill facilitates the integration of Gemini CLI session data into an Obsidian vault by generating structured, high-density Markdown summaries. It automates the extraction of code changes, technical decisions, and session state tags, ensuring that intermittent AI interactions are preserved as permanent, searchable knowledge.
+The goal is simple: make AI interactions searchable and permanent without manual copy-pasting or spending time formulating what you care to remember or specifying formatting.
 
-> [!TODO] [SCREENSHOT: Example of a generated summary note rendered in Obsidian showing frontmatter and code blocks]
+![[Pasted image 20260220160551.png]]
+![[Pasted image 20260220160605.png]]
 
-## Technical Architecture
+## How it works
 
-The skill follows a deterministic pipeline to transform transient chat logs into structured documentation.
+The skill doesn't just dump text; it filters for the technical signal that actually matters.
 
-### 1. State Preservation Logic
-A core feature of the skill is its integration with the Gemini CLI `/chat save` command. 
-- It generates a timestamped, unique tag (e.g., `summary-20260219-153000`).
-- It forces a manual checkpoint by the user before proceeding, ensuring that the generated summary always corresponds to a recoverable state.
+### 1. The Checkpoint Habit
+Hooks into the `/chat save` command. Before it even starts writing a summary, the skill generates a timestamp tag (like `summary-20260220-153000`) and makes sure you’ve saved the session state. If you ever need to jump back in, you have the exact state and the summary side-by-side.
 
-### 2. Contextual Data Harvesting
-The harvesting logic prioritizes technical signal over conversational noise. It specifically targets:
-- **Code Deltas:** Significant modifications or new snippets.
-- **Decision Logs:** Resolution of technical ambiguities or architectural choices.
-- **Open Loops:** Unresolved TODOs or pending questions.
+### 2. High-Signal Harvesting
+Instead of conversational fluff, the logic hunts for:
+- **Code Deltas:** What actually changed in the files?
+- **Decision Log:** Why did we pick *this* architectural path over that one?
+- **Open Loops:** What's still broken or "TODO" for the next session?
 
-### 3. Template and Schema Enforcement
-The skill utilizes a shared configuration file (`../_shared-gemini/skill_settings.md`) to maintain vault-wide consistency.
-- **Frontmatter:** Automatically populates tags, dates, and source links.
-- **WikiLinks:** Resolves local file paths into Obsidian-native `[[FileName]]` syntax.
+### 3. Centralized Shared Settings (DRY)
+### 3. Centralized Shared Settings
 
-> [!TODO] [GITHUB: Upload the SKILL.md and shared_settings.md to a dedicated 'gemini-cli-skills' repository and link here]
+The skill pulls from a central configuration at `_shared-gemini/` to get info and configs that are relevant to multiple skills, like formatting that matches my Obsidian vault style.
 
-## Workflow Integration
+```markdown
+# Shared frontmatter template
+---
+tags: ai_text, {{tags}}
+date: {{date}}
+source: gemini-cli, [[Gemini-CLI]]
+---
+# Contextual identifiers
+- **Working Directory:** `{{working_directory}}`
+- **Operating System:** `{{os}}`
+```
 
-The skill is designed to be the final turn in a task-based session. By standardizing the output format, it allows for automated aggregation via Obsidian plugins like Dataview or Tracker, turning raw AI interactions into a structured technical history.
+This ensures that whether I'm generating a chat summary or a visual narrative map (more on the `conversation-flow` skill in a future post), I have a single place to update my formatting in the future.
 
-> [!TODO] [SCREENSHOT: Dataview query results showing multiple chat summaries aggregated by date or project tag]
+## Setup & Implementation
 
-## Conclusion
-By externalizing the summary logic to a dedicated skill, the Gemini CLI moves beyond a simple chat interface and becomes a foundational tool for documented software engineering.
+To use these shared settings, you need to expose the directory to your Gemini CLI session.
+
+### 1. Clone the Shared Config
+You can find my base templates in the [coffeeproject repository](https://github.com/ReutFarkash/coffeeproject). Clone or copy the `_shared-gemini` folder to a stable location on your machine (e.g., `~/Documents/_shared-gemini`).
+
+### 2. Launch with Context
+The Gemini CLI doesn't automatically scan your entire drive. You must explicitly tell it where the shared resources live using the `--include-directories` flag:
+
+```bash
+# Start your session with the shared settings directory
+gemini --include-directories /absolute/path/to/_shared-gemini
+```
+
+Without this flag, the agent won't be able to "see" the `skill_settings.md` file when it tries to resolve the path `../_shared-gemini/skill_settings.md`.
+
+## Technical Musings: Why Tagging Matters
+
+I’ve made it a point to add a mandatory `ai_text` tag to every note generated by the agent. 
+
+> [!INFO] Technical Rationale: Separating Signal from Noise
+> In a large Obsidian vault, it’s easy for human-written thoughts to get buried under AI-generated summaries. By forcing a specific tag via the `frontmatter-template`, I can filter my graph view or Dataview queries to instantly distinguish between my own primary research and the AI's secondary synthesis. 
+
+It’s not just about organization; it’s about **provenance**. Knowing exactly which parts of my vault were "co-authored" by a LLM helps me maintain a clear mental map of my own knowledge versus the agent's output.
+
+## Try it out
+
+To get the full structured experience, follow these steps:
+
+### 1. Get the Shared Config
+Clone the base settings into your project root (or a central location):
+
+```bash
+# Clone the repository
+git clone https://github.com/ReutFarkash/coffeeproject.git
+
+# The shared settings are located in the _shared-gemini folder
+cp -r coffeeproject/_shared-gemini .
+```
+
+### 2. Install the Skill
+If you’re using the Gemini CLI, you can pull this in directly:
+
+```bash
+gemini skill install https://github.com/ReutFarkash/coffeproject/blob/master/skills/obsidian-chat-summary/SKILL.md --path skills/obsidian-chat-summary
+```
+
+### 3. Run with Context
+Launch your session including the shared directory:
+
+```bash
+gemini --include-directories ./_shared-gemini
+```
+
+Once it's in, just run ask the chat to use `obsidian-chat-summary` at the end of a task.
