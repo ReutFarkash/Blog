@@ -53,3 +53,9 @@
 - **Infrastructure Change:** Synced all GitHub URLs to the dedicated `gemini-skills` repository (`https://github.com/ReutFarkash/gemini-skills`).
 - **Standardization:** Updated frontmatter examples to match the new list-style tags and `date_created` fields established in the shared settings.
 - **Verification:** Installation commands verified against the public repository structure.
+
+[2026-02-21 17:15]
+## Update: Relative Path Documentation & Refinement
+- **Content Rationale:** Added an `[!IMPORTANT]` callout explaining the relative path requirement (`../_shared-gemini/`). This is critical for users who clone the repo but don't follow the exact sibling directory structure.
+- **Tone Alignment:** Refined the post to focus strictly on *using* the skill, removing internal `coffeeproject` layout details as per user request.
+- **Git History:** Performed an intermediate commit to preserve user edits before adding the new callout.
