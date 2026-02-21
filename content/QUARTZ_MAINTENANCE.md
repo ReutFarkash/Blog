@@ -69,3 +69,5 @@ The agent creates a folder at `content/posts/drafts/{{title}}/`. Open the `DEVEL
 - [ ] **Automated GitHub Uploads:** Enhance the blog post skill to automatically propose a `gh gist` or repository upload for code snippets marked with the `[GITHUB]` placeholder.
 - [ ] **Obsidian Callout Styling:** Look into custom CSS for the `> [!TODO]` and `> [!INFO]` callouts in the Quartz frontend to make them stand out (or hide them from the public build).
 - [ ] **Architecture Evolution:** Move all custom skills to their own dedicated repository and include them in the `coffeeproject` as submodules.
+- [ ] **Image Styling:** Tweak CSS for images and screenshots (e.g., add a border or subtle shadow) so they don't meld into the background.
+- [ ] **Sidebar Link Styling:** Rethink CSS for the sidebars to handle long links better. Long link wrapping is currently confusing; consider smaller font sizes or adding bullet dots to clearly separate items.
