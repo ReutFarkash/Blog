@@ -59,3 +59,9 @@
 - **Content Rationale:** Added an `[!IMPORTANT]` callout explaining the relative path requirement (`../_shared-gemini/`). This is critical for users who clone the repo but don't follow the exact sibling directory structure.
 - **Tone Alignment:** Refined the post to focus strictly on *using* the skill, removing internal `coffeeproject` layout details as per user request.
 - **Git History:** Performed an intermediate commit to preserve user edits before adding the new callout.
+
+[2026-02-21 17:45]
+## Update: Humanization & Consistency
+- **Tone Pass:** Applied `thirdparty-softaworks-humanizer` to remove algorithmic phrasing and inject more natural, first-person transitions.
+- **Consistency:** Synchronized the `/chat save` workflow requirement into the project roadmap to ensure it is implemented across all summary/flow skills.
+- **Audit:** Removed "The goal is a testament to..." and other inflated symbolism identified by the humanizer.
