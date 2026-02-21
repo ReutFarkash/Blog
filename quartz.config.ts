@@ -17,7 +17,7 @@ const config: QuartzConfig = {
     },
     locale: "en-US",
     baseUrl: "reutfarkash.github.io/Blog",
-    ignorePatterns: ["private", "templates", ".obsidian", "donotshow", "posts/drafts", "node_modules", "BLOG_STATUS.md", "QUARTZ_MAINTENANCE.md"],
+    ignorePatterns: ["private", "templates", ".obsidian", "donotshow", "posts/drafts", "node_modules", "BLOG_STATUS.md", "QUARTZ_MAINTENANCE.md", "manifests"],
     defaultDateType: "created",
     theme: {
       fontOrigin: "googleFonts",
